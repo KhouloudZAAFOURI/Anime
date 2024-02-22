@@ -1,0 +1,71 @@
+#Banner{
+    background: url(../images/111.jpg) no-repeat center ;
+    background-size: 100% 100% ;
+    height: 80vh;
+    /* position:absolute; */
+    /* top: 0;
+    left: 0; */
+ }
+ #title{
+  padding-top:150px ;
+  padding-left: 30px;
+ }
+ #title h2, h1 span{
+    color: var( --spanColor);
+ }
+ #info, #date{
+gap: 10px;
+align-items: center;
+}
+#PG{
+background-color: white;
+color:BLACK;
+font-size: 20px;
+font-weight:bold ;
+padding: 5px 20PX;
+}
+ #HD{
+   background-color: black;
+   color: white;
+   font-size: 20px;
+   font-weight:bold ;
+   padding: 5px 20PX;
+   border: 2px solid white;
+}
+#year svg, #duration svg {
+   color: var(--spanColor);
+}
+#watch{
+   padding: 10px 40px;
+   background-color: transparent;
+   border: 2px solid var(--spanColor);
+   margin-top: 30px;
+   transition: 1s;
+   -webkit-transition: 1s;
+   -moz-transition: 1s;
+   -ms-transition: 1s;
+   -o-transition: 1s;
+}
+button a {
+   color: white !important;
+   font-size:20px;
+   font-weight: bold;
+   DISPLAY: flex;
+   ALIGN-ITEMS: center;
+   GAP: 13PX;
+   transition: 1s;
+   -webkit-transition: 1s;
+   -moz-transition: 1s;
+   -ms-transition: 1s;
+   -o-transition: 1s;
+}
+button a svg {
+   font-size: 15px;
+}
+#watch:hover {
+   background-color: var(--spanColor);
+}
+button a:hover {
+   color: black !important;
+}
+
