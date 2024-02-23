@@ -4,12 +4,41 @@ import { CiSearch } from "react-icons/ci";
 import { IoChevronUpOutline } from "react-icons/io5";
 import { FaBars } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
-// import logo from "./../images/logo.jpg"
+import Section1 from './Section1';
+import Banner from './Banner';
+
 
 export default function Nav() {
+  //  about the top scroll button 
   const [scroll, setscroll] = useState(false);
+  //  about the navBar in the mobile screen 
   const [open, setopen] = useState(false);
+  //  about the transaction of the navBar
   const [trans, settrans] = useState(false);
+  //  the default component is  the Banner
+  const defaultComponent = (
+    <>
+      <Banner />
+    </>
+  );
+  //  about the component that will render when we click on the navBar 
+    const [selectedPage, setSelectedPage] = useState(defaultComponent);
+
+  // the function that handles the render of the component when we click on it in the NavBar
+  const handleItemClick = (event, index) => {
+    event.preventDefault();
+    const newComponent = nav_link[index].component;
+  // Update the selectedPage state by combining the default and dynamic content
+    setSelectedPage(
+      <>
+        {defaultComponent}
+        {newComponent}
+      </>
+    );
+    // to close the NavBar in the mobile screen after we open it
+    setopen(false);
+  };
+
 
   // get property from the root 
   const bgColor = document.styleSheets[0].cssRules[0].style.getPropertyValue("--bg-color");
@@ -27,24 +56,27 @@ export default function Nav() {
     }
   };
   
+  //  the function of the scroll top 
   const Scrolltop=()=>{
     window.scrollTo(0,0);
   }
-  
+
  // NavBar on the normal screen
   const nav_link = [
-    { title: "Home", path: "/" },
-    { title: "Movie", path: "/" },
+    { title: "Home", path: "/"},
+    { title: "TopRated", path: "/",component: <Section1/> },
     { title: "TvShow", path: "/" },
     { title: "Pricing", path: "/" },
     { title: "Blog", path: "/" },
     { title: "Contact", path: "/" },
   ];
 
+
+// NavBar on the normal screen  
 const nav_link_show = nav_link.map((e, index) => {
     return (
       <li key={index} className="me-4">
-        <a href={e.path}>{e.title}</a>
+        <a href={e.path}onClick={(event) => handleItemClick(event, index)}>{e.title}</a>
       </li>
     );
   });
@@ -53,7 +85,7 @@ const nav_link_show = nav_link.map((e, index) => {
   const nav_in_mobile = nav_link.map((e, index) => {
     return (
       <li key={index} className="p-3 text-center">
-        <a onClick={() => setopen(!open)} href={e.path}>
+        <a  href={e.path} onClick={(event) => handleItemClick(event, index)}>
           {e.title}
         </a>
       </li>
@@ -113,6 +145,7 @@ const nav_link_show = nav_link.map((e, index) => {
 
 
 {/* NavBar on mobile screen */}
+
 <ul id="mobile" className="p-4"
         style={{ transform: open ? "translateX(0)" : "translateX(200%)"}}>
        
@@ -133,6 +166,10 @@ const nav_link_show = nav_link.map((e, index) => {
 </ul>
 
 
+{/* the component that will render when on click on it on the navBar */}
+    {selectedPage}
+
+
 {/* Scroll TOP */}
 <span id="top"
           style={{transform: scroll ? "translateY(0)" : "translateY(-1500px)"}}
@@ -140,6 +177,7 @@ const nav_link_show = nav_link.map((e, index) => {
           <IoChevronUpOutline />
           <IoChevronUpOutline />
 </span>
+
 
    </>  )
 }

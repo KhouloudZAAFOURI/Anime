@@ -21,7 +21,8 @@ export default function Section1() {
       await fetch(TOP_Rated_Movies)
       .then(data=>data.json())
       .then(TopRated=>setRated(TopRated.data));
-      setloading(false);
+       setloading(false);
+      
     }
     catch(err)
     {console.log("ERROR");}   
@@ -34,7 +35,7 @@ export default function Section1() {
   
     getTopRatedAnime();
    }, [])
-
+   
 
 //  is from the react carousel 
 const responsive = {
@@ -68,7 +69,6 @@ const ShowData= TopRated.map((e,index)=>{
         {/* <p className="card-text">{e.synopsis.slice(0,150)}...</p> */}
         <a   href={e.url} className="btn btn-primary">Go somewhere</a>
       </div>
- 
          </div>
   })
 

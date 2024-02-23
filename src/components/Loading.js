@@ -1,9 +1,24 @@
 import React from 'react'
-
+import "./Loading.css"
 export default function Loading() {
   return (
     <>
-    {/* <div style={{width:'100%',height:'100%',zIndex:'99999999', background:'red', position:'absolute', top:'0', right:'0'}}>Loading....</div> */}
+    <div id='load' style={{width:'100%',height:'100%',zIndex:'99999999', position:'absolute', top:'0', right:'0', backgroundColor:"transparent"}}>
+    <div className='lds-default' style={{top:'50%', left:'50%'}}> 
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    </div>
     </>
   )
 }
