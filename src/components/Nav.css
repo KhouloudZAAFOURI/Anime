@@ -63,7 +63,7 @@ nav #bars {
     font-size: 30px;
     cursor: pointer;
     position: absolute;
-    left: 10px;
+    left: 170px;
     bottom: 50%;
     transform: translateY(50%);
     -webkit-transform: translateY(50%);

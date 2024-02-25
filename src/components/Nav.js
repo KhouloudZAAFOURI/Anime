@@ -1,9 +1,8 @@
 import {React,useState} from 'react'
 import "./Nav.css"; 
 import { CiSearch } from "react-icons/ci";
-import { IoChevronUpOutline } from "react-icons/io5";
+import { IoChevronUpOutline,IoClose } from "react-icons/io5";
 import { FaBars } from "react-icons/fa";
-import { IoClose } from "react-icons/io5";
 import Section1 from './Section1';
 import Banner from './Banner';
 
@@ -42,7 +41,8 @@ export default function Nav() {
 
   // get property from the root 
   const bgColor = document.styleSheets[0].cssRules[0].style.getPropertyValue("--bg-color");
-   
+  
+
   window.onscroll = () => {
     if(window.scrollY > 60 && window.scrollY < 300){
         settrans(true);        
@@ -98,12 +98,12 @@ const nav_link_show = nav_link.map((e, index) => {
 {/* header as a container which include the NavBar  */}
 <header style={{ position:"fixed" ,transform: trans?"translateY(-150%)":"translateY(0)" }} className="w-100">
         
-        {/* NavBar on the normal screen which include an ul and bars and Search */}
+        {/* NavBar on the normal screen which include an ul and Search and bars */}
         <nav
           style={{ backgroundColor: scroll ? `${bgColor}` : "transparent" }}
           className="nav"
         >
-          <div className=" d-flex w-100 px-2 py-2 container" style={{alignItems:"center"}}>
+          <div className=" d-flex w-100 px-2 align-items-center container" style={{paddingTop:"20px"}}>
 
             {/* Ul */}
             <div className="d-none d-lg-block">
@@ -111,17 +111,16 @@ const nav_link_show = nav_link.map((e, index) => {
             </div>
 
               {/* Search */}
-              <div className="search position-relative my-3">
+              <div className="search position-relative ">
                   <CiSearch />
                     <input
-                       type="search"
-                       className="h-100  w-100"
-                      placeholder=" Find Movie..."
+                      type="search"
+                      placeholder=" Find Anime..."
                     />
               </div>
 
             {/* Bars */}
-            <div className="d-flex d-lg-none align-items-center ps-2 ">
+            <div className="d-flex d-lg-none align-items-center " style={{paddingLeft:"125px"}}>
               <span id='bars' style={{ transform: !open ? "scale(1)" : "scale(0)" }}>
                 <FaBars
                   color={open ? "#e3d704" : "white"}
