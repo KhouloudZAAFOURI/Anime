@@ -1,0 +1,33 @@
+/* Search */
+.search{
+    width: 25%;
+    margin: 0 auto;
+
+ 
+}
+.search input{
+    background-color: transparent;
+    border: 1px solid var(--spanColor);
+    border-radius: 20px;
+    color: white;
+    padding: 5px ;
+    padding-left: 38px;
+    outline: none;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+}
+.search svg {
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    position: absolute;
+    left: 170px;
+    bottom: 50%;
+    transform: translateY(50%);
+    -webkit-transform: translateY(50%);
+    -moz-transform: translateY(50%);
+    -ms-transform: translateY(50%);
+    -o-transform: translateY(50%);
+}

@@ -1,10 +1,10 @@
 import {React,useState} from 'react'
 import "./Nav.css"; 
-import { CiSearch } from "react-icons/ci";
 import { IoChevronUpOutline,IoClose } from "react-icons/io5";
 import { FaBars } from "react-icons/fa";
 import Section1 from './Section1';
 import Banner from './Banner';
+import Search from './Search';
 
 
 export default function Nav() {
@@ -111,13 +111,7 @@ const nav_link_show = nav_link.map((e, index) => {
             </div>
 
               {/* Search */}
-              <div className="search position-relative ">
-                  <CiSearch />
-                    <input
-                      type="search"
-                      placeholder=" Find Anime..."
-                    />
-              </div>
+             <Search/>
 
             {/* Bars */}
             <div className="d-flex d-lg-none align-items-center " style={{paddingLeft:"125px"}}>
