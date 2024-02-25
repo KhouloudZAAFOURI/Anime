@@ -95,25 +95,30 @@ const nav_link_show = nav_link.map((e, index) => {
   return (
     <>
 
-{/* header as a container which include the NavBar and Search */}
-<header style={{ position:"fixed" ,transform: trans?"translateY(-150%)":"translateY(0)"}} className="w-100">
+{/* header as a container which include the NavBar  */}
+<header style={{ position:"fixed" ,transform: trans?"translateY(-150%)":"translateY(0)" }} className="w-100">
         
-        {/* NavBar on the normal screen which include a logo ul and bars */}
+        {/* NavBar on the normal screen which include an ul and bars and Search */}
         <nav
           style={{ backgroundColor: scroll ? `${bgColor}` : "transparent" }}
-          className="nav "
+          className="nav"
         >
-          <div className=" d-flex w-100 px-2 py-2 d-lg-justify-content-evenly  justify-content-between container">
-
-            {/* Logo */}
-            <div className="logo">
-              {/* <img src={logo} alt="logo" /> */}
-            </div>
+          <div className=" d-flex w-100 px-2 py-2 container" style={{alignItems:"center"}}>
 
             {/* Ul */}
             <div className="d-none d-lg-block">
               <ul className=" d-flex text-light ">{nav_link_show}</ul>
             </div>
+
+              {/* Search */}
+              <div className="search position-relative my-3">
+                  <CiSearch />
+                    <input
+                       type="search"
+                       className="h-100  w-100"
+                      placeholder=" Find Movie..."
+                    />
+              </div>
 
             {/* Bars */}
             <div className="d-flex d-lg-none align-items-center ps-2 ">
@@ -127,19 +132,8 @@ const nav_link_show = nav_link.map((e, index) => {
               </span>
             </div>
           </div>
+      
         </nav>
-
-
-        {/* Search */}
-        <div className="search position-relative my-3">
-          <CiSearch />
-          <input
-            type="search"
-            className="h-100  w-100"
-            placeholder=" Find Movie..."
-          />
-        </div>
-
 
 </header>
 

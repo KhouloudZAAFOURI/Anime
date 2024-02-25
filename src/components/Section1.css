@@ -1,0 +1,9 @@
+.bodycard p {
+    margin: 10px;
+}
+.bodycard h5 {
+    margin: 10px;
+}
+.bodycard span {
+    color: var(--spanColor);
+}
