@@ -32,8 +32,6 @@ export default function Section1() {
   }
     console.log(TopRated);
   
-    
-
   useEffect(() => {
   
     getTopRatedAnime();
