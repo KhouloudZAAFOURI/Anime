@@ -95,26 +95,24 @@ const nav_link_show = nav_link.map((e, index) => {
   return (
     <>
 
+
 {/* header as a container which include the NavBar  */}
 <header style={{ position:"fixed" ,transform: trans?"translateY(-150%)":"translateY(0)" }} className="w-100">
         
-        {/* NavBar on the normal screen which include an ul and Search and bars */}
+        {/* NavBar on the normal screen which include an ul and bars */}
         <nav
-          style={{ backgroundColor: scroll ? `${bgColor}` : "transparent" }}
+          style={{ backgroundColor: scroll ? `${bgColor}` : "transparent"}}
           className="nav"
         >
-          <div className=" d-flex w-100 px-2 align-items-center container" style={{paddingTop:"20px"}}>
+          <div className=" d-flex w-100 px-2 align-items-center container" >
 
             {/* Ul */}
             <div className="d-none d-lg-block">
               <ul className=" d-flex text-light ">{nav_link_show}</ul>
             </div>
 
-              {/* Search */}
-             <Search/>
-
             {/* Bars */}
-            <div className="d-flex d-lg-none align-items-center " style={{paddingLeft:"125px"}}>
+            <div className="d-flex d-lg-none align-items-center " style={{margin:"auto 80%"}}>
               <span id='bars' style={{ transform: !open ? "scale(1)" : "scale(0)" }}>
                 <FaBars
                   color={open ? "#e3d704" : "white"}
@@ -124,17 +122,20 @@ const nav_link_show = nav_link.map((e, index) => {
                 />
               </span>
             </div>
-          </div>
-      
-        </nav>
 
+          </div>      
+        </nav>
+           
 </header>
+
+ {/* Search */}
+ <Search/>
 
 
 {/* NavBar on mobile screen */}
 
 <ul id="mobile" className="p-4"
-        style={{ transform: open ? "translateX(0)" : "translateX(200%)"}}>
+        style={{ transform: open ? "translateX(0)" : "translateX(200%)" , zIndex:"9999991"}}>
        
        
         <span>

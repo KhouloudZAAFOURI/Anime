@@ -8,8 +8,9 @@ header{
     -o-transition: 1.5s;
     z-index: 999;
 }
-
-
+nav {
+    height: 80px;
+}
 
 /* Navigation Bar on the Large Screen */
 nav li{

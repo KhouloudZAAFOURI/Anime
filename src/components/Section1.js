@@ -3,12 +3,12 @@ import "./Section1.css";
 import Title from './Title';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { AiFillLike } from "react-icons/ai";
 import { TOP_Rated_Movies } from "./../API" ;
 import Loading from "./Loading"; 
 import { BiSolidCameraMovie } from "react-icons/bi";
 import { CiTimer } from "react-icons/ci";
 import { IoCalendarOutline } from "react-icons/io5";
+import { AiFillLike } from "react-icons/ai";
 
 export default function Section1() {
 
@@ -79,8 +79,8 @@ const ShowData= TopRated.map((e,index)=>{
 <>
 {loading && <Loading/>}
 
-  <Title subtitle= {"ONLINE STREAMING"} title={"Top Rated Animes"} />
-  <div id='Section1'>
+  <Title title={"Top Rated Anime"} />
+  <div>
         <Carousel responsive={responsive}>
         {ShowData}  
         </Carousel>
