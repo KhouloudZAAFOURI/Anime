@@ -9,31 +9,31 @@ import { CiTimer } from "react-icons/ci";
 import { IoCalendarOutline } from "react-icons/io5";
 import { AiFillLike } from "react-icons/ai";
 
-export default function ForKids() {
+export default function Comedy() {
 
 //  the state that manage the data from the API 
-  const [ForKids,setForKids]=useState([]);
+  const [Comedy,setComedy]=useState([]);
 
 // the state that manage if the data from the API is loaded  
   const [loading,setloading]=useState(true);
 
 //  the function that retreive data from the API and store it in the state TopRated
-  async function getForKids() {
+  async function getComedy() {
     try{
-      await fetch("https://api.jikan.moe/v4/anime?q=kids&sfw")
+      await fetch("https://api.jikan.moe/v4/anime?q=comedy&sfw")
       .then(data=>data.json())
-      .then(ForKids=>setForKids(ForKids.data));
+      .then(Comedy=>setComedy(Comedy.data));
        setloading(false);
       
     }
     catch(err)
     {console.log("ERROR");}   
   }
-    console.log(ForKids);
+    console.log(Comedy);
   
     useEffect(() => {
   
-      getForKids();
+      getComedy();
      }, [])
    
 
@@ -55,9 +55,11 @@ const responsive = {
       slidesToSlide: 1 
     }
   };
-  
 
-const ShowData= ForKids.map((e,index)=>{
+// delete the last item of the array  
+const newComedy = Comedy.slice (0, -1);
+ 
+const ShowData= newComedy.map((e,index)=>{
   return <div key={index} style={{width: '18rem', backgroundColor:"black", color:"white", margin:"10px auto",padding:"10px", marginBottom:"80px", borderRadius:"20px", boxShadow: "0px 0px 10px #e3d704"}}>
   <a target='_blank' href={e.trailer.url}>
     <img style={{width:"266px", borderRadius:"10px"}} src={e.images.jpg.image_url}  alt={e.title_english}/>
@@ -77,7 +79,7 @@ const ShowData= ForKids.map((e,index)=>{
 <>
 {loading && <Loading/>}
 
-  <Title title={"FOR KIDS"} />
+  <Title title={"COMEDY"} />
   <div>
         <Carousel responsive={responsive}>
         {ShowData}  

@@ -19,7 +19,7 @@ export default function Banner() {
                       <div id='info' className='d-flex px-2'>
                       <p id='PG'> PG18</p>
                       <p id='HD'> HD</p>
-                      <p>Romance, Drama </p>
+                      <p>Comedy, Drama </p>
                       </div>
 
                       <div id='date' className='d-flex'>

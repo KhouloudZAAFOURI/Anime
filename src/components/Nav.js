@@ -7,7 +7,8 @@ import Search from './Search';
 import Series from './Series';
 import TopRated from './TopRated';
 import Movies from './Movies';
-import ForKids from './ForKids';
+import Comedy from './Comedy';
+import Drama from './Drama';
 
 export default function Nav() {
   //  about the top scroll button 
@@ -69,8 +70,8 @@ export default function Nav() {
     { title: "TopRated", path: "/",component: <TopRated/> },
     { title: "Series", path: "/",component: <Series/> },
     { title: "Movies", path: "/", component: <Movies/> },
-    { title: "For Kids", path: "/", component: <ForKids/>  },
-    { title: "Contact", path: "/" },
+    { title: "Comedy", path: "/", component: <Comedy/>  },
+    { title: "Drama", path: "/",component: <Drama/> },
   ];
 
 

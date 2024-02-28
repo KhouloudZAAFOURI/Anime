@@ -9,31 +9,31 @@ import { CiTimer } from "react-icons/ci";
 import { IoCalendarOutline } from "react-icons/io5";
 import { AiFillLike } from "react-icons/ai";
 
-export default function Series() {
+export default function Action() {
 
 //  the state that manage the data from the API 
-  const [Series,setSeries]=useState([]);
+  const [Drama,setDrama]=useState([]);
 
 // the state that manage if the data from the API is loaded  
   const [loading,setloading]=useState(true);
 
 //  the function that retreive data from the API and store it in the state TopRated
-  async function getSeries() {
+  async function getDrama() {
     try{
-      await fetch("https://api.jikan.moe/v4/anime?q=series&sfw")
+      await fetch(" https://api.jikan.moe/v4/anime?q=drama&sfw")
       .then(data=>data.json())
-      .then(Series=>setSeries(Series.data));
+      .then(Drama=>setDrama(Drama.data));
        setloading(false);
       
     }
     catch(err)
     {console.log("ERROR");}   
   }
-    console.log(Series);
+    console.log(Drama);
   
     useEffect(() => {
   
-      getSeries();
+      getDrama();
      }, [])
    
 
@@ -55,12 +55,9 @@ const responsive = {
       slidesToSlide: 1 
     }
   };
+  
 
-
-// delete the 12 and 14 item of the array
-const newSeries = Series.filter(e => e.title !== "Lovely Series" && e.title !== "Toshi Densetsu Series");
-
-const ShowData = newSeries.map((e,index)=>{
+const ShowData= Drama.map((e,index)=>{
   return <div key={index} style={{width: '18rem', backgroundColor:"black", color:"white", margin:"10px auto",padding:"10px", marginBottom:"80px", borderRadius:"20px", boxShadow: "0px 0px 10px #e3d704"}}>
   <a target='_blank' href={e.trailer.url}>
     <img style={{width:"266px", borderRadius:"10px"}} src={e.images.jpg.image_url}  alt={e.title_english}/>
@@ -71,6 +68,7 @@ const ShowData = newSeries.map((e,index)=>{
         <p><span> <IoCalendarOutline /> </span> {e.year}</p>
         <p> <span> <BiSolidCameraMovie/> </span> {e.episodes} episode(s) <span> <CiTimer /> </span> {e.duration}  </p>
         <p> <span> <AiFillLike/> </span> {e.favorites}  </p>
+        {/* <p className="card-text">{e.synopsis.slice(0,150)}...</p> */}
         <a href={e.url} className="btn btn-primary" style={{backgroundColor:"#e3d704", color:"black", fontWeight:"bolder", border:"none", margin:"10px 70PX"}}> Show More </a>
       </div>
          </div>
@@ -80,7 +78,7 @@ const ShowData = newSeries.map((e,index)=>{
 <>
 {loading && <Loading/>}
 
-  <Title title={"SERIES"} />
+  <Title title={"DRAMA"} />
   <div>
         <Carousel responsive={responsive}>
         {ShowData}  
