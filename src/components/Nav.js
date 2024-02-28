@@ -2,11 +2,12 @@ import {React,useState} from 'react'
 import "./Nav.css"; 
 import { IoChevronUpOutline,IoClose } from "react-icons/io5";
 import { FaBars } from "react-icons/fa";
-import Section1 from './Section1';
 import Banner from './Banner';
 import Search from './Search';
 import Series from './Series';
-
+import TopRated from './TopRated';
+import Movies from './Movies';
+import ForKids from './ForKids';
 
 export default function Nav() {
   //  about the top scroll button 
@@ -65,10 +66,10 @@ export default function Nav() {
  // NavBar on the normal screen
   const nav_link = [
     { title: "Home", path: "/"},
-    { title: "TopRated", path: "/",component: <Section1/> },
-    { title: "Series", path: "/",component: <Series/>  },
-    { title: "Pricing", path: "/" },
-    { title: "Blog", path: "/" },
+    { title: "TopRated", path: "/",component: <TopRated/> },
+    { title: "Series", path: "/",component: <Series/> },
+    { title: "Movies", path: "/", component: <Movies/> },
+    { title: "For Kids", path: "/", component: <ForKids/>  },
     { title: "Contact", path: "/" },
   ];
 

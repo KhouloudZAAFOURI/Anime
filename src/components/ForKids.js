@@ -9,31 +9,31 @@ import { CiTimer } from "react-icons/ci";
 import { IoCalendarOutline } from "react-icons/io5";
 import { AiFillLike } from "react-icons/ai";
 
-export default function Series() {
+export default function ForKids() {
 
 //  the state that manage the data from the API 
-  const [Series,setSeries]=useState([]);
+  const [ForKids,setForKids]=useState([]);
 
 // the state that manage if the data from the API is loaded  
   const [loading,setloading]=useState(true);
 
 //  the function that retreive data from the API and store it in the state TopRated
-  async function getSeries() {
+  async function getForKids() {
     try{
-      await fetch("https://api.jikan.moe/v4/anime?q=series&sfw")
+      await fetch("https://api.jikan.moe/v4/anime?q=kids&sfw")
       .then(data=>data.json())
-      .then(Series=>setSeries(Series.data));
+      .then(ForKids=>setForKids(ForKids.data));
        setloading(false);
       
     }
     catch(err)
     {console.log("ERROR");}   
   }
-    console.log(Series);
+    console.log(ForKids);
   
     useEffect(() => {
   
-      getSeries();
+      getForKids();
      }, [])
    
 
@@ -57,7 +57,7 @@ const responsive = {
   };
   
 
-const ShowData= Series.map((e,index)=>{
+const ShowData= ForKids.map((e,index)=>{
   return <div key={index} style={{width: '18rem', backgroundColor:"black", color:"white", margin:"10px auto",padding:"10px", marginBottom:"80px", borderRadius:"20px", boxShadow: "0px 0px 10px #e3d704"}}>
   <a target='_blank' href={e.trailer.url}>
     <img style={{width:"266px", borderRadius:"10px"}} src={e.images.jpg.image_url}  alt={e.title_english}/>
@@ -77,7 +77,7 @@ const ShowData= Series.map((e,index)=>{
 <>
 {loading && <Loading/>}
 
-  <Title title={"SERIES"} />
+  <Title title={"FOR KIDS"} />
   <div>
         <Carousel responsive={responsive}>
         {ShowData}  

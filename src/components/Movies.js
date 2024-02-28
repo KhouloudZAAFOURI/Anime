@@ -1,5 +1,5 @@
 import React ,{useEffect,useState}from 'react'
-import "./Section1.css"; 
+import "./TopRated.css"; 
 import Title from './Title';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
@@ -9,31 +9,31 @@ import { CiTimer } from "react-icons/ci";
 import { IoCalendarOutline } from "react-icons/io5";
 import { AiFillLike } from "react-icons/ai";
 
-export default function Section1() {
+export default function Movies() {
 
 //  the state that manage the data from the API 
-  const [TopRated,setRated]=useState([]);
+  const [Movies,setMovies]=useState([]);
 
 // the state that manage if the data from the API is loaded  
   const [loading,setloading]=useState(true);
 
 //  the function that retreive data from the API and store it in the state TopRated
-  async function getTopRatedAnime() {
+  async function getMovies() {
     try{
-      await fetch("https://api.jikan.moe/v4/top/anime")
+      await fetch("https://api.jikan.moe/v4/anime?q=movies&sfw")
       .then(data=>data.json())
-      .then(TopRated=>setRated(TopRated.data));
+      .then(Movies=>setMovies(Movies.data));
        setloading(false);
       
     }
     catch(err)
     {console.log("ERROR");}   
   }
-    console.log(TopRated);
+    console.log(Movies);
   
     useEffect(() => {
   
-      getTopRatedAnime();
+      getMovies();
      }, [])
    
 
@@ -57,7 +57,7 @@ const responsive = {
   };
   
 
-const ShowData= TopRated.map((e,index)=>{
+const ShowData= Movies.map((e,index)=>{
   return <div key={index} style={{width: '18rem', backgroundColor:"black", color:"white", margin:"10px auto",padding:"10px", marginBottom:"80px", borderRadius:"20px", boxShadow: "0px 0px 10px #e3d704"}}>
   <a target='_blank' href={e.trailer.url}>
     <img style={{width:"266px", borderRadius:"10px"}} src={e.images.jpg.image_url}  alt={e.title_english}/>
@@ -78,7 +78,7 @@ const ShowData= TopRated.map((e,index)=>{
 <>
 {loading && <Loading/>}
 
-  <Title title={"Top Rated Anime"} />
+  <Title title={"Movies"} />
   <div>
         <Carousel responsive={responsive}>
         {ShowData}  
