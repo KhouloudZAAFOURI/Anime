@@ -24,7 +24,7 @@ export default function Search() {
   };  
 
 
-  async function handleSearch () {
+ async function handleSearch () {
     if (SearchAnime.length > 0) {
         try {
             await fetch(`https://api.jikan.moe/v4/anime?q=${SearchAnime}&sfw`)
@@ -46,6 +46,9 @@ export default function Search() {
       if (SearchAnime !== '') {
         handleSearch();
       }  
+      if (SearchAnime === '') {
+        setIsVisible(false);
+      } 
 }, [SearchAnime]);   
 
 
@@ -84,9 +87,6 @@ export default function Search() {
   )) 
 : [];
 
-
-
-
   return (
     <>
     <div id='search' style={{position: "fixed",top: "22px", width:"17%", display:"flex", justifyContent:"flex-end", zIndex:"999", margin:"auto 50%"}}>
@@ -99,9 +99,9 @@ export default function Search() {
       />
     </div>
 
-    { searchResultData.length >= 1  && (
+    {searchResultData.length >= 1  && (
 
-          <div style={{borderTop: "5px solid #e3d704", position:"absolute", top:"428px", width:"100%", backgroundColor:"black"}}>
+          <div style={{ position:"absolute", top:"428px", width:"100%", backgroundColor:"black"}}>
           <span style={{color:"#e3d704", fontSize:"50px", position:"absolute", top:"1%", right:"1%", lineHeight:"0", cursor:"pointer"}}>
              <IoIosCloseCircleOutline onClick= {handleClose} />
           </span>
@@ -114,7 +114,7 @@ export default function Search() {
     )}
 
       {searchResultData.length === 0 && SearchAnime !== '' && (
-      <div style={{borderTop: "5px solid #e3d704", position:"absolute", top:"428px", width:"100%", backgroundColor:"black"}}>
+      <div style={{border: "3px solid red", position:"absolute", top:"428px", width:"100%", backgroundColor:"black"}}>
          <span style={{color:"red", display:"flex", alignItems:"center", justifyContent:"center", height:"100px", fontSize:"50px", textTransform:'uppercase'}}>
          No results found for "{SearchAnime}".
          </span>

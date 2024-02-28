@@ -9,31 +9,31 @@ import { CiTimer } from "react-icons/ci";
 import { IoCalendarOutline } from "react-icons/io5";
 import { AiFillLike } from "react-icons/ai";
 
-export default function Section1() {
+export default function Series() {
 
 //  the state that manage the data from the API 
-  const [TopRated,setRated]=useState([]);
+  const [Series,setSeries]=useState([]);
 
 // the state that manage if the data from the API is loaded  
   const [loading,setloading]=useState(true);
 
 //  the function that retreive data from the API and store it in the state TopRated
-  async function getTopRatedAnime() {
+  async function getSeries() {
     try{
-      await fetch("https://api.jikan.moe/v4/top/anime")
+      await fetch("https://api.jikan.moe/v4/anime?q=series&sfw")
       .then(data=>data.json())
-      .then(TopRated=>setRated(TopRated.data));
+      .then(Series=>setSeries(Series.data));
        setloading(false);
       
     }
     catch(err)
     {console.log("ERROR");}   
   }
-    console.log(TopRated);
+    console.log(Series);
   
     useEffect(() => {
   
-      getTopRatedAnime();
+      getSeries();
      }, [])
    
 
@@ -57,7 +57,7 @@ const responsive = {
   };
   
 
-const ShowData= TopRated.map((e,index)=>{
+const ShowData= Series.map((e,index)=>{
   return <div key={index} style={{width: '18rem', backgroundColor:"black", color:"white", margin:"10px auto",padding:"10px", marginBottom:"80px", borderRadius:"20px", boxShadow: "0px 0px 10px #e3d704"}}>
   <a target='_blank' href={e.trailer.url}>
     <img style={{width:"266px", borderRadius:"10px"}} src={e.images.jpg.image_url}  alt={e.title_english}/>
@@ -68,7 +68,6 @@ const ShowData= TopRated.map((e,index)=>{
         <p><span> <IoCalendarOutline /> </span> {e.year}</p>
         <p> <span> <BiSolidCameraMovie/> </span> {e.episodes} episode(s) <span> <CiTimer /> </span> {e.duration}  </p>
         <p> <span> <AiFillLike/> </span> {e.favorites}  </p>
-        {/* <p className="card-text">{e.synopsis.slice(0,150)}...</p> */}
         <a href={e.url} className="btn btn-primary" style={{backgroundColor:"#e3d704", color:"black", fontWeight:"bolder", border:"none", margin:"10px 70PX"}}> Show More </a>
       </div>
          </div>
@@ -78,7 +77,7 @@ const ShowData= TopRated.map((e,index)=>{
 <>
 {loading && <Loading/>}
 
-  <Title title={"Top Rated Anime"} />
+  <Title title={"SERIES"} />
   <div>
         <Carousel responsive={responsive}>
         {ShowData}  

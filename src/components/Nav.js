@@ -5,6 +5,7 @@ import { FaBars } from "react-icons/fa";
 import Section1 from './Section1';
 import Banner from './Banner';
 import Search from './Search';
+import Series from './Series';
 
 
 export default function Nav() {
@@ -65,7 +66,7 @@ export default function Nav() {
   const nav_link = [
     { title: "Home", path: "/"},
     { title: "TopRated", path: "/",component: <Section1/> },
-    { title: "TvShow", path: "/" },
+    { title: "Series", path: "/",component: <Series/>  },
     { title: "Pricing", path: "/" },
     { title: "Blog", path: "/" },
     { title: "Contact", path: "/" },
