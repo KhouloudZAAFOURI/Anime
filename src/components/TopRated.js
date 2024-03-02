@@ -59,13 +59,13 @@ const responsive = {
 
 const ShowData= TopRated.map((e,index)=>{
   return <div key={index} style={{width: '18rem', backgroundColor:"black", color:"white", margin:"10px auto",padding:"10px", marginBottom:"80px", borderRadius:"20px", boxShadow: "0px 0px 10px #e3d704"}}>
-  <a target='_blank' href={e.trailer.url}>
+  <a target='_blank' href={e.trailer.url} rel='noreferrer'>
     <img style={{width:"266px", borderRadius:"10px"}} src={e.images.jpg.image_url}  alt={e.title_english}/>
   </a>
   
       <div className='bodycard'>
         <h5>{e.title_english} </h5>
-        <p><span> <IoCalendarOutline /> </span> {e.year}</p>
+        <p><span> <IoCalendarOutline /> </span> {e.year ? e.year : "Unknown"}</p>
         <p> <span> <BiSolidCameraMovie/> </span> {e.episodes} episode(s) <span> <CiTimer /> </span> {e.duration}  </p>
         <p> <span> <AiFillLike/> </span> {e.favorites}  </p>
         {/* <p className="card-text">{e.synopsis.slice(0,150)}...</p> */}

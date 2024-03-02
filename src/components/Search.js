@@ -9,6 +9,7 @@ import { CiTimer } from "react-icons/ci";
 import { IoCalendarOutline } from "react-icons/io5";
 import { AiFillLike } from "react-icons/ai";
 import { IoIosCloseCircleOutline } from "react-icons/io";
+import NoResults from "./../images/no result.png"; 
 
 export default function Search() {
 
@@ -72,7 +73,7 @@ export default function Search() {
   const searchResultData = searchResult && searchResult.length > 0
   ? searchResult.map((e, index) =>  (
     <div key={index} style={{ width: '18rem', backgroundColor: "black", color: "white", margin: "10px auto", padding: "10px", marginBottom: "80px", borderRadius: "20px", boxShadow: "0px 0px 10px #e3d704" }}>
-      <a target='_blank' href={e.trailer.url}>
+      <a target='_blank' href={e.trailer.url} rel='noreferrer'>
         <img style={{ width: "266px", borderRadius: "10px" }} src={e.images.jpg.image_url} alt={e.title_english} />
       </a>
 
@@ -114,10 +115,19 @@ export default function Search() {
     )}
 
       {searchResultData.length === 0 && SearchAnime !== '' && (
-      <div style={{border: "3px solid red", position:"absolute", top:"428px", width:"100%", backgroundColor:"black"}}>
-         <span style={{color:"red", display:"flex", alignItems:"center", justifyContent:"center", height:"100px", fontSize:"50px", textTransform:'uppercase'}}>
-         No results found for "{SearchAnime}".
-         </span>
+           
+      //  to dislay a div in the center give it a  position:"fixed", left:"50%", top:"50%", transform: translate(-50%, -50%);
+      <div id='noResult' className="col-lg-4 col-md-5 col-sm-8 col-10 mx-auto" style={{position:"fixed", left:"50%", top:"235px",zIndex:9999, borderRadius:"20px",backgroundColor:"white", boxShadow: "10px 10px 20PX #dc3545"}}>
+
+            <div style={{width:"90%", margin:"-20px auto",backgroundColor:"#e3d704", display:'flex', alignItems:"center", justifyContent:"space-between", height:"50px", borderRadius:"20px"}}>
+              <span style={{fontWeight:"bolder", fontSize:"25px", paddingLeft:"20px"}}> Eternityflx </span>
+              <IoIosCloseCircleOutline onClick= {handleClose} style={{fontSize: "30px", marginRight:"20px", cursor:"pointer"}}/>
+            </div>
+
+            <div style={{display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center"}}>
+                 <img src={NoResults} alt='no results' style={{width:"40%", height:"40%",  marginTop:"40px"}}/>      
+                  <p style={{color:"red", fontSize:"20px", fontWeight:"bolder", margin:"20px"}} > No results found for "{SearchAnime}".</p> 
+            </div>
       </div>
       )}
     </>

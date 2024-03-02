@@ -1,6 +1,6 @@
 /* Search */
 #search input{
-    background-color: transparent;
+    background-color: black;
     border: 1px solid var(--spanColor);
     border-radius: 20px;
     color: white;
@@ -24,4 +24,11 @@
     -moz-transform: translateY(50%);
     -ms-transform: translateY(50%);
     -o-transform: translateY(50%);
+}
+#noResult {
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
 }

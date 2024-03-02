@@ -4,11 +4,11 @@ import { IoChevronUpOutline,IoClose } from "react-icons/io5";
 import { FaBars } from "react-icons/fa";
 import Banner from './Banner';
 import Search from './Search';
-import Series from './Series';
+import Upcoming from './Upcoming';
 import TopRated from './TopRated';
-import Movies from './Movies';
 import Comedy from './Comedy';
 import Drama from './Drama';
+import Manga from './Manga';
 
 export default function Nav() {
   //  about the top scroll button 
@@ -68,8 +68,8 @@ export default function Nav() {
   const nav_link = [
     { title: "Home", path: "/"},
     { title: "TopRated", path: "/",component: <TopRated/> },
-    { title: "Series", path: "/",component: <Series/> },
-    { title: "Movies", path: "/", component: <Movies/> },
+    { title: "Upcoming", path: "/",component: <Upcoming/> },
+    { title: "Manga", path: "/", component: <Manga/> },
     { title: "Comedy", path: "/", component: <Comedy/>  },
     { title: "Drama", path: "/",component: <Drama/> },
   ];

@@ -4,36 +4,35 @@ import Title from './Title';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import Loading from "./Loading"; 
-import { BiSolidCameraMovie } from "react-icons/bi";
-import { CiTimer } from "react-icons/ci";
+import { MdOutlineRateReview } from "react-icons/md";
 import { IoCalendarOutline } from "react-icons/io5";
 import { AiFillLike } from "react-icons/ai";
 
-export default function Movies() {
+export default function Upcoming() {
 
 //  the state that manage the data from the API 
-  const [Movies,setMovies]=useState([]);
+  const [Upcoming,setUpcoming] =useState([]);
 
 // the state that manage if the data from the API is loaded  
   const [loading,setloading]=useState(true);
 
 //  the function that retreive data from the API and store it in the state TopRated
-  async function getMovies() {
+  async function getUpcoming() {
     try{
-      await fetch("https://api.jikan.moe/v4/anime?q=movies&sfw")
+      await fetch("https://api.jikan.moe/v4/seasons/upcoming")
       .then(data=>data.json())
-      .then(Movies=>setMovies(Movies.data));
+      .then(Upcoming=>setUpcoming(Upcoming.data));
        setloading(false);
       
     }
     catch(err)
     {console.log("ERROR");}   
   }
-    console.log(Movies);
+    console.log(Upcoming);
   
     useEffect(() => {
   
-      getMovies();
+      getUpcoming();
      }, [])
    
 
@@ -55,20 +54,22 @@ const responsive = {
       slidesToSlide: 1 
     }
   };
-  
 
-const ShowData= Movies.map((e,index)=>{
+
+// delete the 12 and 14 item of the array
+// const newSeries = Series.filter(e => e.title !== "Lovely Series" && e.title !== "Toshi Densetsu Series");
+
+const ShowData = Upcoming.map((e,index)=>{
   return <div key={index} style={{width: '18rem', backgroundColor:"black", color:"white", margin:"10px auto",padding:"10px", marginBottom:"80px", borderRadius:"20px", boxShadow: "0px 0px 10px #e3d704"}}>
-  <a target='_blank' href={e.trailer.url}>
+  <a target='_blank' href={e.trailer.url} rel='noreferrer'>
     <img style={{width:"266px", borderRadius:"10px"}} src={e.images.jpg.image_url}  alt={e.title_english}/>
   </a>
   
       <div className='bodycard'>
-        <h5>{e.title_english} </h5>
-        <p><span> <IoCalendarOutline /> </span> {e.year}</p>
-        <p> <span> <BiSolidCameraMovie/> </span> {e.episodes} episode(s) <span> <CiTimer /> </span> {e.duration}  </p>
+      <h5>{e.title_english ? e.title_english : e.title}</h5> 
+        <p><span> <IoCalendarOutline /> </span> {e.year ? e.year : "Unknown"}</p> 
+        <p> <span> <MdOutlineRateReview/> </span> {e.rating ? e.rating :"Unknown"}</p>
         <p> <span> <AiFillLike/> </span> {e.favorites}  </p>
-        {/* <p className="card-text">{e.synopsis.slice(0,150)}...</p> */}
         <a href={e.url} className="btn btn-primary" style={{backgroundColor:"#e3d704", color:"black", fontWeight:"bolder", border:"none", margin:"10px 70PX"}}> Show More </a>
       </div>
          </div>
@@ -78,7 +79,7 @@ const ShowData= Movies.map((e,index)=>{
 <>
 {loading && <Loading/>}
 
-  <Title title={"Movies"} />
+  <Title title={"Upcoming Seasons"} />
   <div>
         <Carousel responsive={responsive}>
         {ShowData}  
