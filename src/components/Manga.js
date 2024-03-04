@@ -33,7 +33,9 @@ export default function Manga() {
   
       getManga();
      }, [])
-   
+
+const [showFullContent, setShowFullContent] = useState(false)
+
 const ShowData= Manga.map((e,index)=>{
   
   return <div key={index} style={{position:"relative", backgroundColor:"black", color:"white", margin:"10px",padding:"10px", marginBottom:"20px", borderRadius:"20px", boxShadow: "0px 0px 10px #e3d704"}}>
@@ -43,7 +45,17 @@ const ShowData= Manga.map((e,index)=>{
  <img style={{borderRadius:"10px", cursor:"pointer"}} src={e.images.jpg.image_url}  alt={e.title_english}/> 
     <div className="overlayDiv" >
         <h5 style={{display:"flex", justifyContent:"center", alignItems:"center", marginBottom:"10px", color:"#e3d704"}}>{e.title_english.split(' ').slice(0, 2).join(' ')}</h5>
-        <span >{e.background} </span>
+
+        {/* Content (show more and less)  */}
+        <span>
+              {showFullContent ? e.background:e.background.split(' ').slice(0, 30).join(" ")}
+                  <span
+                  style={{color:"#e3d704", cursor:"pointer"}}
+                  onClick={()=>setShowFullContent(!showFullContent)}> 
+                  {showFullContent ? "Show less" : "...Show More"} 
+                </span>
+        </span>
+       
         <div style={{display:"flex", justifyContent:"space-evenly", marginTop:"10px"}}> 
         <p> <span> <AiFillLike/> </span> {e.favorites}  </p>
         <p> <FaRegStar /> {e.score} </p>
