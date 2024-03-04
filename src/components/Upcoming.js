@@ -66,7 +66,8 @@ const ShowData = Upcoming.map((e,index)=>{
   </a>
   
       <div className='bodycard'>
-      <h5>{e.title_english ? e.title_english : e.title}</h5> 
+
+      <h5>{e.title_english && e.title_english.split(" ").slice(0, 2).join(" ")}</h5>
         <p><span> <IoCalendarOutline /> </span> {e.year ? e.year : "Unknown"}</p> 
         <p> <span> <MdOutlineRateReview/> </span> {e.rating ? e.rating :"Unknown"}</p>
         <p> <span> <AiFillLike/> </span> {e.favorites}  </p>
@@ -80,7 +81,7 @@ const ShowData = Upcoming.map((e,index)=>{
 {loading && <Loading/>}
 
   <Title title={"Upcoming Seasons"} />
-  <div>
+  <div style={{backgroundColor:"black"}}>
         <Carousel responsive={responsive}>
         {ShowData}  
         </Carousel>

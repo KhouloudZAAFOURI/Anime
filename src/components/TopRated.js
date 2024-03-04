@@ -64,7 +64,7 @@ const ShowData= TopRated.map((e,index)=>{
   </a>
   
       <div className='bodycard'>
-        <h5>{e.title_english} </h5>
+        <h5>{e.title_english.split (' ').slice(0,2).join(' ')} </h5>
         <p><span> <IoCalendarOutline /> </span> {e.year ? e.year : "Unknown"}</p>
         <p> <span> <BiSolidCameraMovie/> </span> {e.episodes} episode(s) <span> <CiTimer /> </span> {e.duration}  </p>
         <p> <span> <AiFillLike/> </span> {e.favorites}  </p>
@@ -79,7 +79,7 @@ const ShowData= TopRated.map((e,index)=>{
 {loading && <Loading/>}
 
   <Title title={"Top Rated Anime"} />
-  <div>
+  <div style={{backgroundColor:"black"}}>
         <Carousel responsive={responsive}>
         {ShowData}  
         </Carousel>

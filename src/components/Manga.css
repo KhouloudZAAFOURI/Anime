@@ -1,0 +1,45 @@
+  .overlayDiv {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    left: -10%;
+    width: 120%;
+    height: auto;
+    background-color: #6c757d;
+    color: #ffffff;
+    border-radius: 10px;
+    padding: 10px;
+    z-index: 5;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+.overlayDiv p, #more {
+    background-color: black;
+    color: white;
+    font-size: 10px;
+    font-weight:bold ;
+    padding: 5px;
+    border:2px solid #e3d704;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+#more {
+    background-color: #e3d704;
+    color: black;
+    border-radius:20px;
+    -webkit-border-radius:20px;
+    -moz-border-radius:20px;
+    -ms-border-radius:20px;
+    -o-border-radius:20px;
+}
+  
+  .manga:hover .overlayDiv {
+    display: flex;
+  }
+  

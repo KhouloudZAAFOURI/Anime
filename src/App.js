@@ -6,7 +6,7 @@ function App() {
   return (
  
    
-    <div className="App" style={{backgroundColor:"black", height:"1000px"}}>
+    <div className="App" style={{backgroundColor:"black", height:"auto"}}>
       <Nav/>  
     </div>
 
